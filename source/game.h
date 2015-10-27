@@ -1,6 +1,8 @@
 #ifndef _GAME_H
 #define _GAME_H
 
+#include <lua.h>
+
 //! Fatal error types
 typedef enum gameerror_t {
 	ERR_NONE,
@@ -11,7 +13,9 @@ typedef enum gameerror_t {
 
 //! Game instance
 typedef struct game_t {
-	const char* name;
+	Config* config;
+	lua_State* lua;
+	char name[128];
 } Game;
 
 /*! \brief Get fatal error

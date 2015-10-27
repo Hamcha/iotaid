@@ -10,6 +10,10 @@ Pair* parseline(char* line) {
 
 	char* token;
 	Pair* pair = malloc(sizeof(Pair));
+	if (pair == NULL) {
+		//TODO give an error here
+		return NULL;
+	}
 
 	// Get key
 	token = strtok(line, "=");
@@ -37,6 +41,10 @@ Config* config_loadfile(const char* path) {
 	}
 
 	Config* conf = malloc(sizeof(Config));
+	if (conf == NULL) {
+		//TODO will currently give a ERR_CONFIG error, should give ERR_OOM
+		return NULL;
+	}
 
 	char line[256];
 	Pair* current = NULL;
@@ -57,7 +65,18 @@ Config* config_loadfile(const char* path) {
 	return conf;
 }
 
-void config_free(Config* conf) {
+Pair* config_get(Config* conf, const char* name) {
+	Pair* current = conf->first;
+	while (current != NULL) {
+		if (strncmp(current->name, name, 32) == 0) {
+			return current;
+		}
+		current = current->next;
+	}
+	return NULL;
+}
+
+void config_destroy(Config* conf) {
 	Pair* current = conf->first;
 	while (current != NULL) {
 		Pair* temp = current;

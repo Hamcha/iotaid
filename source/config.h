@@ -22,10 +22,20 @@ typedef struct config_t {
  */
 Config* config_loadfile(const char* path);
 
+/*! \brief Lookup a key/value pair by key
+ *
+ *  Search for a key/value pair by key, takes O(n)
+ *
+ *  \param conf Config to search in
+ *  \param name Key to lookup
+ *  \return Key/value pair that matches, NULL otherwise
+ */
+Pair* config_get(Config* conf, const char* name);
+
 /*! \brief Frees up the resources used by a Config instance
  *
  *  \param Config instance to free
  */
-void config_free(Config* config);
+void config_destroy(Config* config);
 
 #endif
