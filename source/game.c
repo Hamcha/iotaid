@@ -60,7 +60,7 @@ Game* game_create() {
 	strncpy(game->name, name->value, 128);
 
 	Pair* gamefile = config_get(cfg, "main");
-	if (name == NULL) {
+	if (gamefile == NULL) {
 		_errstatus = ERR_MISCFG;
 		game_destroy(game);
 		return NULL;

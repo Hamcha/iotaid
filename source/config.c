@@ -43,6 +43,7 @@ Config* config_loadfile(const char* path) {
 	Config* conf = malloc(sizeof(Config));
 	if (conf == NULL) {
 		//TODO will currently give a ERR_CONFIG error, should give ERR_OOM
+		fclose(fp);
 		return NULL;
 	}
 
@@ -61,7 +62,6 @@ Config* config_loadfile(const char* path) {
 	}
 
 	fclose(fp);
-
 	return conf;
 }
 
