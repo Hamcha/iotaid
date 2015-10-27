@@ -1,7 +1,9 @@
 #include "config.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-Pair* parseline(const char* line) {
+Pair* parseline(char* line) {
 	if (line == NULL) {
 		return NULL;
 	}
@@ -59,7 +61,7 @@ void config_free(Config* conf) {
 	Pair* current = conf->first;
 	while (current != NULL) {
 		Pair* temp = current;
-		current = conf->next;
+		current = current->next;
 		free(temp);
 	}
 	free(conf);

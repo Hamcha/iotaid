@@ -2,8 +2,6 @@
 	DOS implementation for term_* functions
 	Uses DJGPP exclusive functions.
 */
-#ifdef __DJGPP__
-
 #include <pc.h>
 #include "term.h"
 
@@ -29,5 +27,3 @@ TermSize term_size() {
 	t.cols = ScreenCols();
 	return t;
 }
-
-#endif

@@ -3,9 +3,9 @@
 
 //! Single linked list pair key/value
 typedef struct pair_t {
-	const char[32] name; //!< Key (max 32 chars)
-	char[128] value;     //!< Value (max 128 chars)
-	Pair* next;          //!< Next pair
+	char name[32];       //!< Key (max 32 chars)
+	char value[128];     //!< Value (max 128 chars)
+	struct pair_t* next; //!< Next pair
 } Pair;
 
 //! Config file

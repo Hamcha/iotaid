@@ -21,6 +21,7 @@ int main() {
 	running = 1;
 	term_blink(0);
 	term_clear();
+	term_goto(0, 0);
 	while(running) {
 		loop();
 	}
