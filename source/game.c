@@ -1,6 +1,7 @@
 #include "game.h"
 #include <stdlib.h>
 #include <string.h>
+#include <lualib.h>
 #include <lauxlib.h>
 
 GameError _errstatus = ERR_NONE;

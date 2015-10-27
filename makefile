@@ -15,7 +15,7 @@ LFLAGS=-llua
 OBJ = config.o game.o main.o
 
 iotaid.exe: $(PLATFORM) $(OBJ)
-	$(CC) $(LFLAGS) -o iotaid.exe $(PLATFORM) $(OBJ)
+	$(CC) $(CFLAGS) -o iotaid.exe $(PLATFORM) $(OBJ) $(LFLAGS)
 
 %.o: ./source/%.c
 	$(CC) $(CFLAGS) -c $<
