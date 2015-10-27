@@ -1,4 +1,5 @@
 #include "game.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <lualib.h>
@@ -67,7 +68,8 @@ Game* game_create() {
 	}
 
 	// Load LUA engine
-	if (luaL_dofile(game->lua, "engine/boot.lua")) {
+	if (luaL_dofile(game->lua, "engine/boot.lua") == 1) {
+		printf("LUA Error encountered: %s\n", lua_tostring(game->lua, -1));
 		_errstatus = ERR_LUA;
 		game_destroy(game);
 		return NULL;
@@ -76,7 +78,8 @@ Game* game_create() {
 	// Execute game part (LUA game logic)
 	char path[256] = "game/";
 	strncat(path, gamefile->value, 128);
-	if (luaL_dofile(game->lua, path)) {
+	if (luaL_dofile(game->lua, path) == 1) {
+		printf("LUA Error encountered: %s\n", lua_tostring(game->lua, -1));
 		_errstatus = ERR_LUA;
 		game_destroy(game);
 		return NULL;

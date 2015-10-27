@@ -27,7 +27,7 @@ Pair* parseline(char* line) {
 	strncpy(pair->name, token, 32);
 
 	// Get value
-	token = strtok(NULL, "\0");
+	token = strtok(NULL, "\n\r\0");
 	if (token == NULL) {
 		free(pair);
 		return NULL;
