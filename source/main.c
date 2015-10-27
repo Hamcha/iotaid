@@ -16,8 +16,6 @@ int main() {
 		return 1;
 	}
 
-	printf(" - Game loaded: %s", game->name);
-
 	running = 1;
 	term_blink(0);
 	term_clear();

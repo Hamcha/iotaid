@@ -26,11 +26,13 @@ const char* game_error() {
 
 Game* game_create() {
 	// Load config
+	printf("- Loading game config..");
 	Config* cfg = config_loadfile("game.cfg");
 	if (cfg == NULL) {
 		_errstatus = ERR_CONFIG;
 		return NULL;
 	}
+	printf(" OK\n");
 
 	// Create instance
 	Game* game = malloc(sizeof(Game));
@@ -67,15 +69,21 @@ Game* game_create() {
 		return NULL;
 	}
 
+	printf("    Game title: %s\n", game->name);
+	printf("    Main module: %s\n\n", gamefile->value);
+
 	// Load LUA engine
+	printf("- Loading LUA engine..");
 	if (luaL_dofile(game->lua, "engine/boot.lua") == 1) {
 		printf("LUA Error encountered: %s\n", lua_tostring(game->lua, -1));
 		_errstatus = ERR_LUA;
 		game_destroy(game);
 		return NULL;
 	}
+	printf(" OK\n");
 
 	// Execute game part (LUA game logic)
+	printf("- Loading LUA game files..");
 	char path[256] = "game/";
 	strncat(path, gamefile->value, 128);
 	if (luaL_dofile(game->lua, path) == 1) {
@@ -84,6 +92,7 @@ Game* game_create() {
 		game_destroy(game);
 		return NULL;
 	}
+	printf(" OK\n");
 
 	return game;
 }
