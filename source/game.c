@@ -68,7 +68,7 @@ Game* game_create() {
 
 	// Load LUA engine
 	if (luaL_dofile(game->lua, "engine/boot.lua")) {
-		_errstatus = ERR_MISCFG;
+		_errstatus = ERR_LUA;
 		game_destroy(game);
 		return NULL;
 	}
@@ -77,7 +77,7 @@ Game* game_create() {
 	char path[256] = "game/";
 	strncat(path, gamefile->value, 128);
 	if (luaL_dofile(game->lua, path)) {
-		_errstatus = ERR_MISCFG;
+		_errstatus = ERR_LUA;
 		game_destroy(game);
 		return NULL;
 	}
