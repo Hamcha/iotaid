@@ -2,13 +2,15 @@
 #define _GAME_H
 
 #include <lua.h>
+#include "config.h"
 
 //! Fatal error types
 typedef enum gameerror_t {
 	ERR_NONE,
 	ERR_OOM,
 	ERR_CONFIG,
-	ERR_MISCFG
+	ERR_MISCFG,
+	ERR_LUA
 } GameError;
 
 //! Game instance

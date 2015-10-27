@@ -10,11 +10,12 @@ else
 endif
 
 CFLAGS=-Wall -g -O2 -Wstrict-aliasing=2
+LFLAGS=-llua
 
 OBJ = config.o game.o main.o
 
 iotaid.exe: $(PLATFORM) $(OBJ)
-	$(CC) $(CFLAGS) -o iotaid.exe $(PLATFORM) $(OBJ)
+	$(CC) $(LFLAGS) -o iotaid.exe $(PLATFORM) $(OBJ)
 
 %.o: ./source/%.c
 	$(CC) $(CFLAGS) -c $<
