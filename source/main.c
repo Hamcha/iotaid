@@ -12,7 +12,7 @@ int main() {
 
 	Game* game = game_create();
 	if (game == NULL) {
-		fprintf(stderr, game_error());
+		fprintf(stderr, "%s\n", game_error());
 		return 1;
 	}
 
