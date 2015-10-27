@@ -15,6 +15,9 @@ Pair* parseline(char* line) {
 		return NULL;
 	}
 
+	// Initialize next at NULL
+	pair->next = NULL;
+
 	// Get key
 	token = strtok(line, "=");
 	if (token == NULL) {

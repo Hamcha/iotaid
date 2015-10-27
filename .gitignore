@@ -1,3 +1,10 @@
 *.EXE
 *.O
 *.LNK
+obj
+*.sdf
+*.opensdf
+*.vcxproj.filters
+.vs
+*.ilk
+*.pdb
