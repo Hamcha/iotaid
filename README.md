@@ -16,7 +16,7 @@ After getting a working DJGPP environment working (will explain in more detail i
 
 ### Windows
 
-Get yourself a static lua 5.2 .lib file (compile it, it's not hard) and fix the VC15 solution paths (as it will have mine). Then just compile.
+Get yourself a static lua 5.2 .lib file (compile it, it's not hard) and fix the VC14 solution's paths (as it will have mine). Then just compile.
 
 ### Linux / FreeBSD / *nix
 
