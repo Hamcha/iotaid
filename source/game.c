@@ -84,7 +84,8 @@ Game* game_create() {
 
 	// Execute game part (LUA game logic)
 	printf("- Loading LUA game files..");
-	char path[256] = "game/";
+	char path[256] = { 0 };
+	strncat(path, "game/", 6);
 	strncat(path, gamefile->value, 128);
 	if (luaL_dofile(game->lua, path) == 1) {
 		printf("LUA Error encountered: %s\n", lua_tostring(game->lua, -1));
